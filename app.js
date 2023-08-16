@@ -2,30 +2,33 @@ const express = require('express')
 const app = express()
 // const router = express.Router()
 app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: false }));
 
 
 
 app.get('/user', (req,res) => {
     console.log("HI")
-    console.log(req.headers)
-    // res.set({
-    //     'content-type': 'text/plain',
-    //     'warning': 'encoding will be addded by default'
-    // })
-    var name = 'Anusha'
-    res.render('hello', {name: name
-       
-    })
-    // console.log(res.headersSent)
-    // console.log(res.body)
-    // console.log(req.headers)
+    res.render('hello')
 })
 
-app.get('/error', (req,res) => {
-    
-    res.status(500)
-    res.send('error')
+app.post('/user', (req,res) => {
+    console.log('request body')
+    console.log(req.body)
+    console.log(req.body.name)
+    console.log(req.body.email)
+  
+    res.redirect('/success')
 })
+
+app.get('/success', (req,res) => {
+    res.send("Hey, WELCOME!!")
+})
+
+// app.get('/error', (req,res) => {
+    
+//     res.status(500)
+//     res.send('error')
+// })
 
 
 app.listen(3000)
