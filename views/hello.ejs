@@ -8,6 +8,9 @@
 <body>
     <h1>Hello</h1>
     <form action="/user" method="POST">
+        <label for="id">ID</label>
+        <input type="text" name="id">
+        <br>
         <label for="name">Name</label>
         <input type="name" name="name" >
         <br>
@@ -16,5 +19,64 @@
         <br>
         <input type="submit" name="btn">
     </form>
+
+    <table>
+        <tr>
+            <th>Sr no</th>
+            <th>Name</th>
+            <th>Delete</th>
+        </tr>
+
+        <tr>
+
+           
+                <% for (const key in del_btns) { %>
+                    
+                
+                    <td>
+                        <%= key %>
+                     </td>
+                     <td>
+                        <%= del_btns[key] %>
+                     </td>
+
+            <td>
+            <form action="/deleteprocess" method="POST">
+                <input type="hidden" name="delete" value="<%= key %>">
+               <button>Delete</button>
+            </form>
+            </td>
+        </tr>
+        <% }; %>
+
+        <!-- <% for (var i = 1; i<=10; i++) { %>
+            <tr>
+                <td><%= i %></td>
+                <td>
+                <form action="/deleteprocess" method="POST">
+                    <input type="hidden" name="delete" value="<%= i %>">
+                   <button>Delete</button>
+                </form>
+                </td>
+            </tr> 
+            <% } %> -->
+        </table>
+
+
+
+    <!-- <% for (var i = 1; i<=10; i++) { %>
+        <tr>
+            <td><%= i %></td>
+            <td>
+            <form action="/deleteprocess" method="POST">
+                <input type="hidden" name="delete" value="<%= i %>">
+               <button>Delete</button>
+            </form>
+            </td>
+        </tr> 
+        <% } %>
+    </table> -->
+
+       
 </body>
 </html>
