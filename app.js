@@ -11,24 +11,16 @@ app.get('/user', (req,res) => {
     res.render('hello')
 })
 
+
+//getting form data from req body and passing that info as context to the view
 app.post('/user', (req,res) => {
-    console.log('request body')
-    console.log(req.body)
     console.log(req.body.name)
     console.log(req.body.email)
-  
-    res.redirect('/success')
-})
+    res.render('welcome', {
+        name: req.body.name
+    })
 
-app.get('/success', (req,res) => {
-    res.send("Hey, WELCOME!!")
 })
-
-// app.get('/error', (req,res) => {
-    
-//     res.status(500)
-//     res.send('error')
-// })
 
 
 app.listen(3000)
